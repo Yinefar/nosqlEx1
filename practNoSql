@@ -1,0 +1,212 @@
+test> use productos
+switched to db productos
+productos>
+
+productos> db.productos.insertOne(
+...   {
+...     _id: 1,
+...     nombre: 'Lapiceros',
+...     fabricante: 'Faber Castell',
+...     precio: 5.2,
+...     cantidad: 100
+...   }
+... )
+{ acknowledged: true, insertedId: 1 }
+productos> db.productos.insertOne(
+...   {
+...     _id: 2,
+...     nombre: 'Reglas',
+...     fabricante: 'Faber Castell',
+...     precio: 4.10,
+...     cantidad: 200
+...   }
+... )
+{ acknowledged: true, insertedId: 2 }
+productos> db.productos.insertOne(
+...   {
+...     _id: 3,
+...     nombre: 'Cuaderno 200 hojas',
+...     fabricante: 'Justus',
+...     precio: 15.60,
+...     cantidad: 100
+...   }
+... )
+{ acknowledged: true, insertedId: 3 }
+productos> db.productos.insertOne(
+...   {
+...     _id: 4,
+...     nombre: 'Tajador',
+...     fabricante: 'Loro',
+...     precio: 1.90,
+...     cantidad: 200
+...   }
+... )
+{ acknowledged: true, insertedId: 4 }
+productos> db.productos.insertOne(
+...   {
+...     _id: 5,
+...     nombre: 'Cuadernillo',
+...     fabricante: 'Justus',
+...     precio: 2.10,
+...     cantidad: 150
+...   }
+... )
+{ acknowledged: true, insertedId: 5 }
+productos> db.productos.insertOne(
+...   {
+...     _id: 6,
+...     nombre: 'Block',
+...     fabricante: 'Justus',
+...     precio: 5.10,
+...     cantidad: 50
+...   }
+... )
+{ acknowledged: true, insertedId: 6 }
+productos>
+
+productos>
+
+productos> show collections
+productos
+productos>
+
+-------------1)Imprimir todos los documentos de la colección 'productos'.
+productos> db.productos.find()
+[
+  {
+    _id: 1,
+    nombre: 'Lapiceros',
+    fabricante: 'Faber Castell',
+    precio: 5.2,
+    cantidad: 100
+  },
+  {
+    _id: 2,
+    nombre: 'Reglas',
+    fabricante: 'Faber Castell',
+    precio: 4.1,
+    cantidad: 200
+  },
+  {
+    _id: 3,
+    nombre: 'Cuaderno 200 hojas',
+    fabricante: 'Justus',
+    precio: 15.6,
+    cantidad: 100
+  },
+  {
+    _id: 4,
+    nombre: 'Tajador',
+    fabricante: 'Loro',
+    precio: 1.9,
+    cantidad: 200
+  },
+  {
+    _id: 5,
+    nombre: 'Cuadernillo',
+    fabricante: 'Justus',
+    precio: 2.1,
+    cantidad: 150
+  },
+  {
+    _id: 6,
+    nombre: 'Block',
+    fabricante: 'Justus',
+    precio: 5.1,
+    cantidad: 50
+  }
+]
+productos> 
+productos> 
+---2)	Recupere los productos cuyo fabricante sea 'Faber Castell' y cuyo precio sea menor a 5.
+
+productos> db.productos.find({
+ 	$and : [ 
+		{
+		    fabricante: "Faber Castell",
+		},
+{
+		precio: { $lt:5 }
+}]
+})
+
+-----------3) Recupere los productos cuyo fabricante sea 'Faber Castell' o cuyo precio sea menor a 5.
+
+db.productos.find({
+ 	$or : [ 
+		{
+		    fabricante: "Faber Castell",
+		},
+{
+		precio: { $lt:5 }
+}]
+})
+
+---4)	Muestre todos los productos cuyo fabricante NO sea "Justus".
+
+
+db.productos.find({fabricante: 
+	{
+		$nin : [
+			"Justus"
+		]
+	}
+}
+)
+
+
+-----------5)Muestre todos los productos cuyo fabricante sea "Justus" y cuya cantidad NO sea=100.
+
+productos> db.productos.find({
+ 	$and : [ 
+		{
+		    fabricante: "Justus",
+		},
+{
+		cantidad: { $ne:100 }
+}]
+})
+
+
+
+------6)Elimine todos los documentos de la colección productos cuyo fabricante sea igual a "Justus" y su precio sea mayor a 10.
+
+db.productos.deleteMany({
+	$and : [
+		{
+		    fabricante: "Justus",
+		},
+{ 
+	precio: { $gt:10 }
+}]
+}
+) 
+
+-----7)Cambie la cantidad por 200, a todos los productos de "Faber Castell" cuyo precio sea mayor a 5.
+
+
+db.productos.updateMany(
+{ $and: [
+	{precio: { $gt:5 }
+},
+{fabricante: "Faber Castell"} ]},
+
+	{
+		$set: {
+			cantidad: 200,
+		}
+	}
+)
+
+---8)Borre los productos cuyo fabricante sea "Justus" o cuyo precio sea menor a 3.
+
+db.productos.deleteMany({
+	$or : [
+		{
+		    fabricante: "Justus",
+		},
+{ 
+	precio: { $lt:3 }
+}]
+}
+) 
