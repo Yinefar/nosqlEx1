@@ -1,0 +1,162 @@
+db.ventas.insertOne(
+  {
+    _id: 1,  
+    cliente: {
+				nombre: "andres",
+				apellidoPaterno: "ramos",
+				apellidoMaterno: "torres",
+				direccion: "las torres 123 - Surco"
+			  },
+	productos: [
+        {
+            codigo: "001",
+            producto: "mochila",
+			precio: 200,
+			cantidad: 2
+        },
+        {
+            codigo: "002",
+            producto: "cuaderno 100 hojas",
+			precio: 30,
+			cantidad: 5
+        },
+        {
+            codigo: "003",
+            producto: "boligrafo",
+			precio: 10,
+			cantidad: 10
+        }
+    ],
+    boleta: "A000-0001",
+    fecha: "01/05/2022"  
+  }
+)
+db.ventas.insertOne(
+  {
+    _id: 2,  
+    cliente: {
+				nombre: "maria",
+				apellidoPaterno: "perez",
+				apellidoMaterno: "aguilar",
+				direccion: "las flores 596 - pueblo libre"
+			  },
+	productos: [
+        {
+            codigo: "001",
+            producto: "mochila",
+			precio: 200,
+			cantidad: 1
+        },
+        {
+            codigo: "004",
+            producto: "cartuchera",
+			precio: 20,
+			cantidad: 1
+        },
+        {
+            codigo: "005",
+            producto: "cuaderno 200 hojas",
+			precio: 40,
+			cantidad: 2
+        }
+    ],
+    boleta: "B000-0002",
+    fecha: "02/05/2022"  
+  }
+)
+db.ventas.insertOne(
+  {
+    _id: 3,  
+    cliente: {
+				nombre: "rafael",
+				apellidoPaterno: "gutierrez",
+				apellidoMaterno: "palma",
+				direccion: "calle uno 950 - surco"
+			  },
+	productos: [
+        {
+            codigo: "002",
+            producto: "cuaderno 100 hojas",
+			precio: 30,
+			cantidad: 2
+        },
+        {
+            codigo: "003",
+            producto: "boligrafo",
+			precio: 10,
+			cantidad: 3
+        }
+    ],
+    boleta: "A000-0002",
+    fecha: "02/05/2022"  
+  }
+)
+db.ventas.insertOne(
+  {
+    _id: 4,  
+    cliente: {
+				nombre: "carol",
+				apellidoPaterno: "castro",
+				apellidoMaterno: "telles",
+				direccion: "calle los girasoles 521 - magdalena"
+			  },
+	productos: [
+        {
+            codigo: "001",
+            producto: "mochila",
+			precio: 200,
+			cantidad: 1
+        }
+    ],
+    boleta: "B000-0003",
+    fecha: "03/05/2022"  
+  }
+)
+db.ventas.insertOne(
+  {
+    _id: 5,  
+    cliente: {
+				nombre: "pablo",
+				apellidoPaterno: "gutierrez",
+				apellidoMaterno: "julca",
+				direccion: "av. ensenada 440 - Surquillo"
+			  },
+	productos: [
+        {
+            codigo: "004",
+            producto: "cartuchera",
+			precio: 20,
+			cantidad: 2
+        },
+        {
+            codigo: "005",
+            producto: "cuaderno 200 hojas",
+			precio: 40,
+			cantidad: 3
+        }
+    ],
+    boleta: "A000-0005",
+    fecha: "03/05/2022"  
+  }
+)
+db.ventas.insertOne(
+  {
+    _id: 6,  
+    cliente: {
+				nombre: "marco",
+				apellidoPaterno: "lavalle",
+				apellidoMaterno: "soto",
+				direccion: "los quechas 124 - surquillo"
+			  },
+	productos: [
+        {
+            codigo: "003",
+            producto: "boligrafo",
+			precio: 10,
+			cantidad: 5
+        }
+    ],
+    boleta: "A000-0006",
+    fecha: "03/05/2022"  
+  }
+)
