@@ -1,0 +1,71 @@
+
+1--
+db.ventas.aggregate([
+  { $match: { producto: "calculadora" } },
+  {
+    $group: {
+      _id: "$fecha_compra",
+      ventas: { $sum: { $multiply: ["$cantidad", "$precio_unitario"] } }
+    }
+  },
+  { $sort: { _id: 1 } }
+])
+
+
+2----
+db.ventas.aggregate( [
+	{ 
+		$match: {
+			id_cliente: 1
+	  }
+	},
+	{ 
+		$group: {
+			_id: {
+			 fecha: "$fecha_compra" 	
+		},
+		ventas: {
+		  $sum: {
+		    $multiply: [
+				"$cantidad",
+				"$precio_unitario"
+			]
+	          }
+		}
+	    }	
+
+	},
+	{ 
+		$sort: {
+			"_id.fecha": 1
+		}
+	}
+])
+
+
+
+5. 
+
+
+db.ventas.aggregate([
+  {
+    $group: {
+      _id: "$id_cliente",
+      nombre: { $first: "$nom_cliente" },
+      apellidos: { $first: { $concat: ["$ape_pat_cliente", " ", "$ape_mat_cliente"] } },
+      ventas: { $sum: { $multiply: ["$cantidad", "$precio_unitario"] } }
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      nombreCompleto: { $concat: ["$nombre", " ", "$apellidos"] },
+      ventas: 1
+    }
+  },
+  {
+    $sort: {
+      _id: -1
+    }
+  }
+]);
