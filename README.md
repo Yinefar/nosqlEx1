@@ -1,3 +1,4 @@
 # nosqlEx1
 
-+ MongoDB  | Collections 
++ MongoDB  | Collections
++ No relacional bd
